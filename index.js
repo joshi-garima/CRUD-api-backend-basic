@@ -18,7 +18,7 @@ app.use('/api/products', productRoute)
 
 
 
-app.listen(process.env.PORT,() =>{
+app.listen(PORT,() =>{
     console.log("Server is running on port 5000");
 })
 

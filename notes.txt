@@ -1,0 +1,26 @@
+app.get('/', function (req, res) {
+  res.send('Hello World')
+})
+
+
+// Insertig the data
+app.post('/api/products', async (req,res) =>{
+    // console.log(req.body)
+    // res.send(req.body)
+    // res.send("Data recieved")
+    try{
+        // await - for innserting the data
+        // Since we are using insert, we  will require async 
+        // 200 - succesful 
+        const product = await model.create(req.body)
+        res.status(200).json(product)
+
+    }catch(error){
+        // 500 - server error 
+        res.status(500).json({message: error.message})
+    }
+})
+
+
+initially every CRUD action was in index.js but we made different modules - Router(for get,post meathod) 
+and a controller module for the req,res body (as it was almost same)
